@@ -1,0 +1,4056 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Rainbond Open API",
+        "description": "Rainbond open api",
+        "termsOfService": "https://www.rainbond.com",
+        "contact": {
+            "email": "barnett@goodrain.com"
+        },
+        "license": {
+            "name": "LGPL License"
+        },
+        "version": "v1"
+    },
+    "host": "192.168.2.213:7070",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/openapi/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "in": "header",
+            "name": "Authorization",
+            "type": "apiKey"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "paths": {
+        "/administrators": {
+            "get": {
+                "operationId": "administrators_list",
+                "description": "获取企业管理员列表",
+                "parameters": [
+                    {
+                        "name": "eid",
+                        "in": "query",
+                        "description": "企业ID",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListUsersRespView"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "post": {
+                "operationId": "administrators_create",
+                "description": "添加企业用户",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateAdminUserReq"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": []
+        },
+        "/announcements": {
+            "get": {
+                "operationId": "announcements_list",
+                "description": "获取站内信列表",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListAnnouncementResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-announcement"
+                ]
+            },
+            "post": {
+                "operationId": "announcements_create",
+                "description": "添加站内信",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateAncmReqSerilizer"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-announcement"
+                ]
+            },
+            "parameters": []
+        },
+        "/announcements/{aid}": {
+            "put": {
+                "operationId": "announcements_update",
+                "description": "更新站内信",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateAncmReqSerilizer"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-announcement"
+                ]
+            },
+            "delete": {
+                "operationId": "announcements_delete",
+                "description": "删除站内信",
+                "parameters": [],
+                "responses": {},
+                "tags": [
+                    "openapi-announcement"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "aid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/apps": {
+            "get": {
+                "operationId": "apps_list",
+                "description": "应用列表",
+                "parameters": [
+                    {
+                        "name": "team_alias",
+                        "in": "query",
+                        "description": "团名唯一别名",
+                        "type": "string"
+                    },
+                    {
+                        "name": "region_name",
+                        "in": "query",
+                        "description": "数据中心唯一名称",
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "搜索查询应用名称，团队名称",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AppBaseInfo"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-apps"
+                ]
+            },
+            "post": {
+                "operationId": "apps_create",
+                "description": "创建应用",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AppPostInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AppBaseInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-apps"
+                ]
+            },
+            "parameters": []
+        },
+        "/apps/{app_id}": {
+            "get": {
+                "operationId": "apps_read",
+                "description": "应用详情",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AppInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-apps"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "app_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/apps/{app_id}/httprules": {
+            "get": {
+                "operationId": "apps_httprules_list",
+                "description": "获取应用http访问策略列表",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/HTTPGatewayRule"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-gateway"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "app_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/appstores": {
+            "get": {
+                "operationId": "appstores_list",
+                "description": "获取应用市场信息列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "按企业名称, 企业别名搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListAppStoreInfosResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-appstore"
+                ]
+            },
+            "parameters": []
+        },
+        "/appstores/{eid}": {
+            "put": {
+                "operationId": "appstores_update",
+                "description": "修改应用市场信息",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdAppStoreInfoReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AppStoreInfo"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-appstore"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "eid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/auth-token": {
+            "post": {
+                "operationId": "auth-token_create",
+                "description": "企业管理员账号密码获取API-Token",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "title": "AuthRequest",
+                            "required": [
+                                "username",
+                                "password"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "password": {
+                                    "description": "管理员密码",
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "description": "管理员用户名",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/configs/base": {
+            "get": {
+                "operationId": "configs_base_list",
+                "description": "获取基础配置",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/BaseConfigResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "put": {
+                "operationId": "configs_base_update",
+                "description": "更新基础配置",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateBaseConfigReq"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "parameters": []
+        },
+        "/configs/feature": {
+            "get": {
+                "operationId": "configs_feature_list",
+                "description": "获取全部功能配置",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FeatureConfigResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "put": {
+                "operationId": "configs_feature_update",
+                "description": "修改指定的功能配置及状态",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateFeatureCfgReq"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "parameters": []
+        },
+        "/configs/feature/{key}": {
+            "get": {
+                "operationId": "configs_feature_read",
+                "description": "获取指定的功能配置",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/FeatureConfigResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "delete": {
+                "operationId": "configs_feature_delete",
+                "description": "删除指定的功能配置",
+                "parameters": [],
+                "responses": {},
+                "tags": [
+                    "openapi-config"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "key",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/enterprises": {
+            "get": {
+                "operationId": "enterprises_list",
+                "description": "获取企业列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "按企业名称, 企业别名搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListEntsResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-entreprise"
+                ]
+            },
+            "parameters": []
+        },
+        "/enterprises/{eid}": {
+            "get": {
+                "operationId": "enterprises_read",
+                "description": "获取企业信息",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/EnterpriseInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-entreprise"
+                ]
+            },
+            "put": {
+                "operationId": "enterprises_update",
+                "description": "更新企业信息",
+                "parameters": [
+                    {
+                        "name": "eid",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "maxLength": 32,
+                        "minLength": 1
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 1
+                    },
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 1
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-entreprise"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "eid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/market-install": {
+            "post": {
+                "operationId": "market-install_create",
+                "description": "安装云市应用",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MarketInstall"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AppInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-apps"
+                ]
+            },
+            "parameters": []
+        },
+        "/regions": {
+            "get": {
+                "operationId": "regions_list",
+                "description": "获取全部数据中心列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "根据数据中心名称搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RegionInfoResp"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "post": {
+                "operationId": "regions_create",
+                "description": "添加数据中心",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "title": "AddRegionRequest",
+                            "required": [
+                                "region_name",
+                                "region_alias",
+                                "url",
+                                "wsurl",
+                                "httpdomain",
+                                "tcpdomain"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "cert_file": {
+                                    "type": "string"
+                                },
+                                "desc": {
+                                    "type": "string"
+                                },
+                                "httpdomain": {
+                                    "type": "string"
+                                },
+                                "key_file": {
+                                    "type": "string"
+                                },
+                                "region_alias": {
+                                    "type": "string"
+                                },
+                                "region_name": {
+                                    "type": "string"
+                                },
+                                "scope": {
+                                    "type": "string"
+                                },
+                                "ssl_ca_cert": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "integer"
+                                },
+                                "tcpdomain": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "wsurl": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    },
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegionInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "parameters": []
+        },
+        "/regions/{region_id}": {
+            "get": {
+                "operationId": "regions_read",
+                "description": "获取指定数据中心数据",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegionInfo"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "put": {
+                "operationId": "regions_update",
+                "description": "更新指定数据中心元数据",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRegionReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegionInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "delete": {
+                "operationId": "regions_delete",
+                "description": "删除指定数据中心元数据",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegionInfo"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "region_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/regions/{region_id}/status": {
+            "put": {
+                "operationId": "regions_status_update",
+                "description": "修改数据中心的状态(上线, 下线, 设为维护)",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRegionStatusReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RegionInfo"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-region"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "region_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams": {
+            "get": {
+                "operationId": "teams_list",
+                "description": "获取团队列表",
+                "parameters": [
+                    {
+                        "name": "eid",
+                        "in": "query",
+                        "description": "企业ID",
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "团队名称搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "tenant_names",
+                        "in": "query",
+                        "description": "根据租户名称获取列表",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListTeamResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "post": {
+                "operationId": "teams_create",
+                "description": "add team",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateTeamReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TeamBaseInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "parameters": []
+        },
+        "/teams/{team_id}": {
+            "get": {
+                "operationId": "teams_read",
+                "description": "获取团队",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TeamInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "put": {
+                "operationId": "teams_update",
+                "description": "更新团队信息",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateTeamInfoReq"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "delete": {
+                "operationId": "teams_delete",
+                "description": "删除团队",
+                "parameters": [],
+                "responses": {},
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/regions": {
+            "get": {
+                "operationId": "teams_regions_list",
+                "description": "获取团队开通的数据中心列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "根据数据中心名称搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListTeamRegionsResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team-region"
+                ]
+            },
+            "post": {
+                "operationId": "teams_regions_create",
+                "description": "开通数据中心",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TeamRegionReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TeamBaseInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team-region"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/regions/{region_name}": {
+            "delete": {
+                "operationId": "teams_regions_delete",
+                "description": "关闭数据中心",
+                "parameters": [],
+                "responses": {},
+                "tags": [
+                    "openapi-team-region"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "region_name",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/regions/{region_name}/services": {
+            "get": {
+                "operationId": "teams_regions_services_list",
+                "description": "获取团队下指定数据中心组件信息",
+                "parameters": [
+                    {
+                        "name": "eid",
+                        "in": "query",
+                        "description": "根据数据中心名称搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "team_name",
+                        "in": "query",
+                        "description": "根据数据中心名称搜索",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListRegionTeamServices"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "delete": {
+                "operationId": "teams_regions_services_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "teams"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "region_name",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/user-roles": {
+            "get": {
+                "operationId": "teams_user-roles_list",
+                "description": "获取用户角色列表",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleInfoResp"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user-role"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/users": {
+            "get": {
+                "operationId": "teams_users_list",
+                "description": "获取团队用户列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "用户名、邮箱、手机号搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListTeamUsersResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/teams/{team_id}/users/{user_id}": {
+            "post": {
+                "operationId": "teams_users_create",
+                "description": "add team user",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateTeamUserReq"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "put": {
+                "operationId": "teams_users_update",
+                "description": "update team user",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateTeamUserReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "delete": {
+                "operationId": "teams_users_delete",
+                "description": "将用户从团队中移除",
+                "parameters": [],
+                "responses": {
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-team"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "team_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/upload-file": {
+            "post": {
+                "operationId": "upload-file_create",
+                "description": "上传文件",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "文件",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UploadFileResp"
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "openapi-upload"
+                ]
+            },
+            "parameters": []
+        },
+        "/user/changepwd": {
+            "put": {
+                "operationId": "user_changepwd_update",
+                "description": "修改用户密码",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangePassWdUser"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": []
+        },
+        "/users": {
+            "get": {
+                "operationId": "users_list",
+                "description": "获取用户列表",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "用户名、邮箱、手机号搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListUsersRespView"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "post": {
+                "operationId": "users_create",
+                "description": "添加普通用户",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateUser"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": []
+        },
+        "/users/{user_id}": {
+            "get": {
+                "operationId": "users_read",
+                "description": "根据用户ID获取用户信息",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UserInfo"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "put": {
+                "operationId": "users_update",
+                "description": "更新用户信息",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateUser"
+                        }
+                    }
+                ],
+                "responses": {},
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "delete": {
+                "operationId": "users_delete",
+                "description": "删除用户",
+                "parameters": [],
+                "responses": {},
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/users/{user_id}/administrator": {
+            "delete": {
+                "operationId": "users_administrator_delete",
+                "description": "删除企业管理员",
+                "parameters": [],
+                "responses": {
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Fail"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/users/{user_id}/teams": {
+            "get": {
+                "operationId": "users_teams_list",
+                "description": "获取用户的团队列表",
+                "parameters": [
+                    {
+                        "name": "eid",
+                        "in": "query",
+                        "description": "企业ID",
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "团队名称搜索",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页码",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "每页数量",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ListTeamResp"
+                        }
+                    }
+                },
+                "tags": [
+                    "openapi-user"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "user_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "UserInfo": {
+            "required": [
+                "user_id"
+            ],
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "title": "User id",
+                    "type": "integer"
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "邮件地址",
+                    "type": "string",
+                    "maxLength": 35,
+                    "x-nullable": true
+                },
+                "nick_name": {
+                    "title": "Nick name",
+                    "description": "用户昵称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "description": "手机号码",
+                    "type": "string",
+                    "maxLength": 11,
+                    "x-nullable": true
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "激活状态",
+                    "type": "boolean"
+                },
+                "origion": {
+                    "title": "Origion",
+                    "description": "用户来源",
+                    "type": "string",
+                    "maxLength": 12,
+                    "x-nullable": true
+                },
+                "create_time": {
+                    "title": "Create time",
+                    "description": "创建时间",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "client_ip": {
+                    "title": "Client ip",
+                    "description": "注册ip",
+                    "type": "string",
+                    "maxLength": 20,
+                    "x-nullable": true
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "enterprise_id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                }
+            }
+        },
+        "ListUsersRespView": {
+            "required": [
+                "users",
+                "total"
+            ],
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserInfo"
+                    }
+                },
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                }
+            }
+        },
+        "CreateAdminUserReq": {
+            "required": [
+                "user_id",
+                "eid"
+            ],
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "title": "User id",
+                    "description": "用户ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "eid": {
+                    "title": "Eid",
+                    "description": "企业ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                }
+            }
+        },
+        "AnnouncementRespSerilizer": {
+            "type": "object",
+            "properties": {
+                "announcement_id": {
+                    "title": "Announcement id",
+                    "description": "通知唯一标识",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 0
+                },
+                "content": {
+                    "title": "Content",
+                    "description": "通知内容",
+                    "type": "string",
+                    "maxLength": 1000,
+                    "minLength": 0
+                },
+                "a_tag": {
+                    "title": "A tag",
+                    "description": "A标签文字",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0
+                },
+                "a_tag_url": {
+                    "title": "A tag url",
+                    "description": "a标签跳转地址",
+                    "type": "string",
+                    "maxLength": 1024,
+                    "minLength": 0
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "通知类型",
+                    "type": "string",
+                    "maxLength": 15,
+                    "minLength": 0
+                },
+                "active": {
+                    "title": "Active",
+                    "description": "通知是否启用",
+                    "type": "boolean"
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "通知标题",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 0
+                },
+                "level": {
+                    "title": "Level",
+                    "description": "通知的等级",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 0
+                }
+            }
+        },
+        "ListAnnouncementResp": {
+            "required": [
+                "total",
+                "announcements"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                },
+                "announcements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AnnouncementRespSerilizer"
+                    }
+                }
+            }
+        },
+        "CreateAncmReqSerilizer": {
+            "required": [
+                "content",
+                "type",
+                "active",
+                "title",
+                "level"
+            ],
+            "type": "object",
+            "properties": {
+                "content": {
+                    "title": "Content",
+                    "description": "通知内容",
+                    "type": "string",
+                    "maxLength": 1000
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "通知类型",
+                    "type": "string",
+                    "maxLength": 15
+                },
+                "active": {
+                    "title": "Active",
+                    "description": "通知是否启用",
+                    "type": "boolean"
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "通知标题",
+                    "type": "string",
+                    "maxLength": 64
+                },
+                "level": {
+                    "title": "Level",
+                    "description": "通知的等级",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "a_tag": {
+                    "title": "A tag",
+                    "description": "A标签文字",
+                    "type": "string",
+                    "maxLength": 256
+                },
+                "a_tag_url": {
+                    "title": "A tag url",
+                    "description": "a标签跳转地址",
+                    "type": "string",
+                    "maxLength": 1024
+                }
+            }
+        },
+        "UpdateAncmReqSerilizer": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "title": "Content",
+                    "description": "通知内容",
+                    "type": "string",
+                    "maxLength": 1000,
+                    "minLength": 0
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "通知类型",
+                    "type": "string",
+                    "maxLength": 15,
+                    "minLength": 0
+                },
+                "active": {
+                    "title": "Active",
+                    "description": "通知是否启用",
+                    "type": "boolean",
+                    "x-nullable": true
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "通知标题",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 0
+                },
+                "level": {
+                    "title": "Level",
+                    "description": "通知的等级",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 0
+                },
+                "a_tag": {
+                    "title": "A tag",
+                    "description": "A标签文字",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0
+                },
+                "a_tag_url": {
+                    "title": "A tag url",
+                    "description": "a标签跳转地址",
+                    "type": "string",
+                    "maxLength": 1024,
+                    "minLength": 0
+                }
+            }
+        },
+        "AppBaseInfo": {
+            "required": [
+                "tenant_id",
+                "group_name",
+                "region_name"
+            ],
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "tenant_id": {
+                    "title": "Tenant id",
+                    "description": "租户id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "group_name": {
+                    "title": "Group name",
+                    "description": "组名",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "区域中心名称",
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "is_default": {
+                    "title": "Is default",
+                    "description": "默认组件",
+                    "type": "boolean"
+                }
+            }
+        },
+        "AppPostInfo": {
+            "required": [
+                "team_alias",
+                "app_name",
+                "region_name"
+            ],
+            "type": "object",
+            "properties": {
+                "team_alias": {
+                    "title": "Team alias",
+                    "description": "所属团队别名",
+                    "type": "string",
+                    "maxLength": 16,
+                    "minLength": 1
+                },
+                "app_name": {
+                    "title": "App name",
+                    "description": "应用名称",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "数据中心唯一名称",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                }
+            }
+        },
+        "AppInfo": {
+            "required": [
+                "enterprise_id",
+                "status",
+                "tenant_id",
+                "group_name",
+                "region_name"
+            ],
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业ID(联合云ID)",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "应用状态",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "tenant_id": {
+                    "title": "Tenant id",
+                    "description": "租户id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "group_name": {
+                    "title": "Group name",
+                    "description": "组名",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "区域中心名称",
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "is_default": {
+                    "title": "Is default",
+                    "description": "默认组件",
+                    "type": "boolean"
+                }
+            }
+        },
+        "HTTPGatewayRule": {
+            "required": [
+                "http_rule_id",
+                "region_id",
+                "tenant_id",
+                "service_id",
+                "service_name",
+                "domain_name"
+            ],
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "http_rule_id": {
+                    "title": "Http rule id",
+                    "description": "http_rule_id",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "region_id": {
+                    "title": "Region id",
+                    "description": "region id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "tenant_id": {
+                    "title": "Tenant id",
+                    "description": "租户id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "service_id": {
+                    "title": "Service id",
+                    "description": "组件id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "service_name": {
+                    "title": "Service name",
+                    "description": "组件名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "domain_name": {
+                    "title": "Domain name",
+                    "description": "域名",
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 1
+                },
+                "create_time": {
+                    "title": "Create time",
+                    "description": "创建时间",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "container_port": {
+                    "title": "Container port",
+                    "description": "容器端口",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "protocol": {
+                    "title": "Protocol",
+                    "description": "域名类型 http https httptphttps httpandhttps",
+                    "type": "string",
+                    "maxLength": 15,
+                    "minLength": 1
+                },
+                "certificate_id": {
+                    "title": "Certificate id",
+                    "description": "证书ID",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "domain_type": {
+                    "title": "Domain type",
+                    "description": "组件域名类型",
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "service_alias": {
+                    "title": "Service alias",
+                    "description": "组件别名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "is_senior": {
+                    "title": "Is senior",
+                    "description": "是否有高级路由",
+                    "type": "boolean"
+                },
+                "domain_path": {
+                    "title": "Domain path",
+                    "description": "域名path",
+                    "type": "string"
+                },
+                "domain_cookie": {
+                    "title": "Domain cookie",
+                    "description": "域名cookie",
+                    "type": "string"
+                },
+                "domain_heander": {
+                    "title": "Domain heander",
+                    "description": "域名heander",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "类型（默认：0， 自定义：1）",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "the_weight": {
+                    "title": "The weight",
+                    "description": "权重",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "rule_extensions": {
+                    "title": "Rule extensions",
+                    "description": "扩展功能",
+                    "type": "string"
+                },
+                "is_outer_service": {
+                    "title": "Is outer service",
+                    "description": "是否已开启对外端口",
+                    "type": "boolean"
+                }
+            }
+        },
+        "AppStoreInfo": {
+            "required": [
+                "enterprise_id",
+                "enterprise_name",
+                "enterprise_alias",
+                "appstore_name",
+                "access_url"
+            ],
+            "type": "object",
+            "properties": {
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业ID(联合云ID)",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "enterprise_name": {
+                    "title": "Enterprise name",
+                    "description": "企业名称",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "enterprise_alias": {
+                    "title": "Enterprise alias",
+                    "description": "企业别名",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "appstore_name": {
+                    "title": "Appstore name",
+                    "description": "应用市场名称",
+                    "type": "string"
+                },
+                "access_url": {
+                    "title": "Access url",
+                    "description": "应用市场API地址",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "ListAppStoreInfosResp": {
+            "required": [
+                "total",
+                "appstores"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "description": "总数",
+                    "type": "integer"
+                },
+                "appstores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AppStoreInfo"
+                    }
+                }
+            }
+        },
+        "UpdAppStoreInfoReq": {
+            "required": [
+                "access_url"
+            ],
+            "type": "object",
+            "properties": {
+                "access_url": {
+                    "title": "Access url",
+                    "description": "应用市场API地址",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "Fail": {
+            "required": [
+                "msg"
+            ],
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "title": "Msg",
+                    "type": "string",
+                    "maxLength": 300,
+                    "minLength": 1
+                }
+            }
+        },
+        "Token": {
+            "required": [
+                "token"
+            ],
+            "type": "object",
+            "properties": {
+                "token": {
+                    "title": "Token",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                }
+            }
+        },
+        "BaseConfigResp": {
+            "type": "object",
+            "properties": {
+                "TITLE": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "LOGO": {
+                    "title": "Logo",
+                    "type": "string",
+                    "maxLength": 2097152,
+                    "minLength": 1
+                },
+                "REGISTER_STATUS": {
+                    "title": "Register status",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "RAINBOND_VERSION": {
+                    "title": "Rainbond version",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "ENTERPRISE_ALIAS": {
+                    "title": "Enterprise alias",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "UpdateBaseConfigReq": {
+            "type": "object",
+            "properties": {
+                "TITLE": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "LOGO": {
+                    "title": "Logo",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "REGISTER_STATUS": {
+                    "title": "Register status",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "RAINBOND_VERSION": {
+                    "title": "Rainbond version",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "ENTERPRISE_ALIAS": {
+                    "title": "Enterprise alias",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "GithubServiceAPIResp": {
+            "title": "Value",
+            "type": "object",
+            "properties": {
+                "client_secret": {
+                    "title": "Client secret",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "redirect_uri": {
+                    "title": "Redirect uri",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "x-nullable": true
+                },
+                "client_id": {
+                    "title": "Client id",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                }
+            }
+        },
+        "GithubServiceBaseResp": {
+            "title": "Github",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "$ref": "#/definitions/GithubServiceAPIResp"
+                }
+            }
+        },
+        "GitlabServiceAPIResp": {
+            "title": "Value",
+            "type": "object",
+            "properties": {
+                "admin_user": {
+                    "title": "Admin user",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "url": {
+                    "title": "Url",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "x-nullable": true
+                },
+                "apitype": {
+                    "title": "Apitype",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "hook_url": {
+                    "title": "Hook url",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "x-nullable": true
+                },
+                "admin_password": {
+                    "title": "Admin password",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "admin_email": {
+                    "title": "Admin email",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                }
+            }
+        },
+        "GitlabServiceBaseResp": {
+            "title": "Gitlab",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "$ref": "#/definitions/GitlabServiceAPIResp"
+                }
+            }
+        },
+        "AppStoreImageHubResp": {
+            "title": "Value",
+            "type": "object",
+            "properties": {
+                "namespace": {
+                    "title": "Namespace",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "hub_password": {
+                    "title": "Hub password",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "hub_url": {
+                    "title": "Hub url",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "x-nullable": true
+                },
+                "hub_user": {
+                    "title": "Hub user",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                }
+            }
+        },
+        "AppStoreImageHubBaseResp": {
+            "title": "Appstore image hub",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "$ref": "#/definitions/AppStoreImageHubResp"
+                }
+            }
+        },
+        "OpenDataCenterStatusBaseResp": {
+            "title": "Open data center status",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "maxLength": 225,
+                    "x-nullable": true
+                }
+            }
+        },
+        "OfficialDemoBaseResp": {
+            "title": "Official demo",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "maxLength": 225,
+                    "x-nullable": true
+                }
+            }
+        },
+        "NewBieGuideBaseResp": {
+            "title": "Newbie guide",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "maxLength": 225,
+                    "x-nullable": true
+                }
+            }
+        },
+        "ExportAppBaseResp": {
+            "title": "Export app",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "maxLength": 225,
+                    "x-nullable": true
+                }
+            }
+        },
+        "CloudMarketBaseResp": {
+            "title": "Cloud market",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string",
+                    "maxLength": 225,
+                    "x-nullable": true
+                }
+            }
+        },
+        "DocumentResp": {
+            "title": "Value",
+            "type": "object",
+            "properties": {
+                "platform_url": {
+                    "title": "Platform url",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "x-nullable": true
+                }
+            }
+        },
+        "DocumentBaseResp": {
+            "title": "Document",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "$ref": "#/definitions/DocumentResp"
+                }
+            }
+        },
+        "ObjectStorageResp": {
+            "title": "Value",
+            "required": [
+                "provider",
+                "endpoint",
+                "access_key",
+                "secret_key",
+                "bucket_name"
+            ],
+            "type": "object",
+            "properties": {
+                "provider": {
+                    "title": "Provider",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "endpoint": {
+                    "title": "Endpoint",
+                    "type": "string",
+                    "maxLength": 2047,
+                    "minLength": 1
+                },
+                "access_key": {
+                    "title": "Access key",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "secret_key": {
+                    "title": "Secret key",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "bucket_name": {
+                    "title": "Bucket name",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "ObjectStorageBaseResp": {
+            "title": "Object storage",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "$ref": "#/definitions/ObjectStorageResp"
+                }
+            }
+        },
+        "OauthServicesResp": {
+            "required": [
+                "name",
+                "client_id",
+                "client_secret",
+                "oauth_type"
+            ],
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": true
+                },
+                "auth_url": {
+                    "title": "Auth url",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "client_id": {
+                    "title": "Client id",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "client_secret": {
+                    "title": "Client secret",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "redirect_uri": {
+                    "title": "Redirect uri",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "is_console": {
+                    "title": "Is console",
+                    "type": "boolean",
+                    "default": true
+                },
+                "is_auto_login": {
+                    "title": "Is auto login",
+                    "type": "boolean",
+                    "default": true
+                },
+                "service_id": {
+                    "title": "Service id",
+                    "type": "integer"
+                },
+                "oauth_type": {
+                    "title": "Oauth type",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "eid": {
+                    "title": "Eid",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "home_page": {
+                    "title": "Home page",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "access_token_url": {
+                    "title": "Access token url",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "api_url": {
+                    "title": "Api url",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "OauthServicesBaseResp": {
+            "title": "Oauth services",
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "title": "Enable",
+                    "type": "boolean",
+                    "default": false
+                },
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OauthServicesResp"
+                    }
+                }
+            }
+        },
+        "FeatureConfigResp": {
+            "required": [
+                "github",
+                "gitlab",
+                "appstore_image_hub",
+                "open_data_center_status",
+                "official_demo",
+                "newbie_guide",
+                "export_app",
+                "cloud_market",
+                "document"
+            ],
+            "type": "object",
+            "properties": {
+                "github": {
+                    "$ref": "#/definitions/GithubServiceBaseResp"
+                },
+                "gitlab": {
+                    "$ref": "#/definitions/GitlabServiceBaseResp"
+                },
+                "appstore_image_hub": {
+                    "$ref": "#/definitions/AppStoreImageHubBaseResp"
+                },
+                "open_data_center_status": {
+                    "$ref": "#/definitions/OpenDataCenterStatusBaseResp"
+                },
+                "official_demo": {
+                    "$ref": "#/definitions/OfficialDemoBaseResp"
+                },
+                "newbie_guide": {
+                    "$ref": "#/definitions/NewBieGuideBaseResp"
+                },
+                "export_app": {
+                    "$ref": "#/definitions/ExportAppBaseResp"
+                },
+                "cloud_market": {
+                    "$ref": "#/definitions/CloudMarketBaseResp"
+                },
+                "document": {
+                    "$ref": "#/definitions/DocumentBaseResp"
+                },
+                "object_storage": {
+                    "$ref": "#/definitions/ObjectStorageBaseResp"
+                },
+                "oauth_services": {
+                    "$ref": "#/definitions/OauthServicesBaseResp"
+                }
+            }
+        },
+        "UpdateFeatureCfgReq": {
+            "type": "object",
+            "properties": {
+                "github": {
+                    "$ref": "#/definitions/GithubServiceBaseResp"
+                },
+                "gitlab": {
+                    "$ref": "#/definitions/GitlabServiceBaseResp"
+                },
+                "appstore_image_hub": {
+                    "$ref": "#/definitions/AppStoreImageHubBaseResp"
+                },
+                "open_data_center_status": {
+                    "$ref": "#/definitions/OpenDataCenterStatusBaseResp"
+                },
+                "official_demo": {
+                    "$ref": "#/definitions/OfficialDemoBaseResp"
+                },
+                "newbie_guide": {
+                    "$ref": "#/definitions/NewBieGuideBaseResp"
+                },
+                "export_app": {
+                    "$ref": "#/definitions/ExportAppBaseResp"
+                },
+                "cloud_market": {
+                    "$ref": "#/definitions/CloudMarketBaseResp"
+                },
+                "document": {
+                    "$ref": "#/definitions/DocumentBaseResp"
+                },
+                "object_storage": {
+                    "$ref": "#/definitions/ObjectStorageBaseResp"
+                },
+                "oauth_services": {
+                    "$ref": "#/definitions/OauthServicesBaseResp"
+                }
+            }
+        },
+        "EnterpriseInfo": {
+            "required": [
+                "enterprise_id",
+                "enterprise_name",
+                "enterprise_alias",
+                "create_time"
+            ],
+            "type": "object",
+            "properties": {
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业ID(联合云ID)",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "enterprise_name": {
+                    "title": "Enterprise name",
+                    "description": "企业名称",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "enterprise_alias": {
+                    "title": "Enterprise alias",
+                    "description": "企业别名",
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 1
+                },
+                "create_time": {
+                    "title": "Create time",
+                    "description": "创建时间",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "ListEntsResp": {
+            "required": [
+                "total",
+                "ents"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "description": "总数",
+                    "type": "integer"
+                },
+                "ents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EnterpriseInfo"
+                    }
+                }
+            }
+        },
+        "MarketInstall": {
+            "required": [
+                "order_id",
+                "app_id"
+            ],
+            "type": "object",
+            "properties": {
+                "order_id": {
+                    "title": "Order id",
+                    "description": "订单ID,通过订单ID去市场下载安装的应用元数据",
+                    "type": "string",
+                    "maxLength": 36,
+                    "minLength": 1
+                },
+                "app_id": {
+                    "title": "App id",
+                    "description": "安装应用ID",
+                    "type": "integer"
+                }
+            }
+        },
+        "RegionInfoResp": {
+            "required": [
+                "region_id",
+                "region_name",
+                "region_alias",
+                "url",
+                "wsurl",
+                "httpdomain",
+                "tcpdomain",
+                "status",
+                "desc",
+                "ssl_ca_cert",
+                "cert_file",
+                "key_file"
+            ],
+            "type": "object",
+            "properties": {
+                "region_id": {
+                    "title": "Region id",
+                    "description": "region id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "数据中心名称",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_alias": {
+                    "title": "Region alias",
+                    "description": "数据中心别名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "url": {
+                    "title": "Url",
+                    "description": "数据中心API url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "wsurl": {
+                    "title": "Wsurl",
+                    "description": "数据中心Websocket url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "httpdomain": {
+                    "title": "Httpdomain",
+                    "description": "数据中心http应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "tcpdomain": {
+                    "title": "Tcpdomain",
+                    "description": "数据中心tcp应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "数据中心token",
+                    "type": "string",
+                    "default": "",
+                    "maxLength": 138,
+                    "x-nullable": true
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "数据中心状态 0：编辑中 1:启用 2：停用 3:维护中",
+                    "type": "string",
+                    "maxLength": 2,
+                    "minLength": 1
+                },
+                "desc": {
+                    "title": "Desc",
+                    "description": "数据中心描述",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "scope": {
+                    "title": "Scope",
+                    "description": "数据中心范围 private|public",
+                    "type": "string",
+                    "default": "private",
+                    "maxLength": 10,
+                    "minLength": 1
+                },
+                "ssl_ca_cert": {
+                    "title": "Ssl ca cert",
+                    "description": "数据中心访问ca证书地址",
+                    "type": "string",
+                    "maxLength": 65535
+                },
+                "cert_file": {
+                    "title": "Cert file",
+                    "description": "验证文件",
+                    "type": "string",
+                    "maxLength": 65535
+                },
+                "key_file": {
+                    "title": "Key file",
+                    "description": "验证的key",
+                    "type": "string",
+                    "maxLength": 65535
+                }
+            }
+        },
+        "RegionInfo": {
+            "required": [
+                "region_id",
+                "region_name",
+                "region_alias",
+                "url",
+                "wsurl",
+                "httpdomain",
+                "tcpdomain",
+                "status"
+            ],
+            "type": "object",
+            "properties": {
+                "region_id": {
+                    "title": "Region id",
+                    "description": "region id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "数据中心名称,不可修改",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_alias": {
+                    "title": "Region alias",
+                    "description": "数据中心别名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "url": {
+                    "title": "Url",
+                    "description": "数据中心API url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "数据中心token",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "wsurl": {
+                    "title": "Wsurl",
+                    "description": "数据中心Websocket url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "httpdomain": {
+                    "title": "Httpdomain",
+                    "description": "数据中心http应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "tcpdomain": {
+                    "title": "Tcpdomain",
+                    "description": "数据中心tcp应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "scope": {
+                    "title": "Scope",
+                    "description": "数据中心范围 private|public",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1
+                },
+                "ssl_ca_cert": {
+                    "title": "Ssl ca cert",
+                    "description": "数据中心访问ca证书地址",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "cert_file": {
+                    "title": "Cert file",
+                    "description": "验证文件",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "key_file": {
+                    "title": "Key file",
+                    "description": "验证的key",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "数据中心状态 0：编辑中 1:启用 2：停用 3:维护中",
+                    "type": "string",
+                    "maxLength": 2,
+                    "minLength": 1
+                },
+                "desc": {
+                    "title": "Desc",
+                    "description": "数据中心描述",
+                    "type": "string",
+                    "maxLength": 128
+                }
+            }
+        },
+        "UpdateRegionReq": {
+            "required": [
+                "region_alias",
+                "url",
+                "wsurl",
+                "httpdomain",
+                "tcpdomain",
+                "status"
+            ],
+            "type": "object",
+            "properties": {
+                "region_alias": {
+                    "title": "Region alias",
+                    "description": "数据中心别名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "url": {
+                    "title": "Url",
+                    "description": "数据中心API url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "数据中心token",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "wsurl": {
+                    "title": "Wsurl",
+                    "description": "数据中心Websocket url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "httpdomain": {
+                    "title": "Httpdomain",
+                    "description": "数据中心http应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "tcpdomain": {
+                    "title": "Tcpdomain",
+                    "description": "数据中心tcp应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "scope": {
+                    "title": "Scope",
+                    "description": "数据中心范围 private|public",
+                    "type": "string",
+                    "maxLength": 10,
+                    "minLength": 1
+                },
+                "ssl_ca_cert": {
+                    "title": "Ssl ca cert",
+                    "description": "数据中心访问ca证书地址",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "cert_file": {
+                    "title": "Cert file",
+                    "description": "验证文件",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "key_file": {
+                    "title": "Key file",
+                    "description": "验证的key",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "数据中心状态 0：编辑中 1:启用 2：停用 3:维护中",
+                    "type": "string",
+                    "maxLength": 2,
+                    "minLength": 1
+                },
+                "desc": {
+                    "title": "Desc",
+                    "description": "数据中心描述",
+                    "type": "string",
+                    "maxLength": 128
+                }
+            }
+        },
+        "UpdateRegionStatusReq": {
+            "required": [
+                "status"
+            ],
+            "type": "object",
+            "properties": {
+                "status": {
+                    "title": "Status",
+                    "description": "需要设置的数据中心状态, 可选值为: 'ONLINE', 'OFFLINE', 'MAINTAIN'(大小写不敏感)",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "RoleInfo": {
+            "description": "用户在团队中拥有的角色",
+            "required": [
+                "role_name",
+                "role_id"
+            ],
+            "type": "object",
+            "properties": {
+                "role_name": {
+                    "title": "Role name",
+                    "description": "角色名称",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "role_id": {
+                    "title": "Role id",
+                    "description": "角色ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                }
+            }
+        },
+        "TeamInfo": {
+            "required": [
+                "tenant_id",
+                "tenant_name",
+                "tenant_alias",
+                "enterprise_id"
+            ],
+            "type": "object",
+            "properties": {
+                "tenant_id": {
+                    "title": "Tenant id",
+                    "description": "团队ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "tenant_name": {
+                    "title": "Tenant name",
+                    "description": "团队名称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "tenant_alias": {
+                    "title": "Tenant alias",
+                    "description": "团队别名",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region": {
+                    "title": "Region",
+                    "description": "数据中心名称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "x-nullable": true
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "是否激活",
+                    "type": "boolean"
+                },
+                "create_time": {
+                    "title": "Create time",
+                    "description": "创建时间",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "creater": {
+                    "title": "Creater",
+                    "description": "团队拥有者用户",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "service_num": {
+                    "title": "Service num",
+                    "description": "团队的组件数量",
+                    "type": "integer"
+                },
+                "region_num": {
+                    "title": "Region num",
+                    "description": "团队开通的数据中心数量",
+                    "type": "integer"
+                },
+                "role_infos": {
+                    "description": "用户在团队中拥有的角色",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RoleInfo"
+                    }
+                }
+            }
+        },
+        "ListTeamResp": {
+            "required": [
+                "tenants"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                },
+                "tenants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TeamInfo"
+                    }
+                }
+            }
+        },
+        "CreateTeamReq": {
+            "required": [
+                "tenant_name",
+                "enterprise_id"
+            ],
+            "type": "object",
+            "properties": {
+                "tenant_name": {
+                    "title": "Tenant name",
+                    "description": "团队名称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "团队所属企业ID,未提供时默认使用请求用户企业ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "creater": {
+                    "title": "Creater",
+                    "description": "团队所属人，未提供时默认使用登录用户作为所属人",
+                    "type": "integer"
+                },
+                "region": {
+                    "title": "Region",
+                    "description": "默认开通的数据中心，未指定则不开通",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                }
+            }
+        },
+        "TeamBaseInfo": {
+            "required": [
+                "tenant_name"
+            ],
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "tenant_id": {
+                    "title": "Tenant id",
+                    "description": "租户id",
+                    "type": "string",
+                    "maxLength": 33,
+                    "minLength": 1
+                },
+                "tenant_name": {
+                    "title": "Tenant name",
+                    "description": "租户名称",
+                    "type": "string",
+                    "maxLength": 40,
+                    "minLength": 1
+                },
+                "region": {
+                    "title": "Region",
+                    "description": "区域中心,弃用",
+                    "type": "string",
+                    "maxLength": 30,
+                    "minLength": 1
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "激活状态",
+                    "type": "boolean"
+                },
+                "create_time": {
+                    "title": "Create time",
+                    "description": "创建时间",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "creater": {
+                    "title": "Creater",
+                    "description": "租户创建者",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "limit_memory": {
+                    "title": "Limit memory",
+                    "description": "内存大小单位（M）",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": -2147483648
+                },
+                "update_time": {
+                    "title": "Update time",
+                    "description": "更新时间",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "expired_time": {
+                    "title": "Expired time",
+                    "description": "过期时间",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-nullable": true
+                },
+                "tenant_alias": {
+                    "title": "Tenant alias",
+                    "description": "团队别名",
+                    "type": "string",
+                    "maxLength": 64,
+                    "x-nullable": true
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "x-nullable": true
+                }
+            }
+        },
+        "UpdateTeamInfoReq": {
+            "type": "object",
+            "properties": {
+                "region": {
+                    "title": "Region",
+                    "description": "数据中心名称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "是否激活",
+                    "type": "boolean"
+                },
+                "creater": {
+                    "title": "Creater",
+                    "description": "团队拥有者用户ID",
+                    "type": "integer"
+                },
+                "tenant_alias": {
+                    "title": "Tenant alias",
+                    "description": "团队别名",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "企业ID",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                }
+            }
+        },
+        "TeamRegionsResp": {
+            "required": [
+                "region_id",
+                "region_name",
+                "region_alias",
+                "tenant_name",
+                "url",
+                "wsurl",
+                "httpdomain",
+                "tcpdomain",
+                "status",
+                "desc",
+                "ssl_ca_cert",
+                "cert_file",
+                "key_file"
+            ],
+            "type": "object",
+            "properties": {
+                "region_id": {
+                    "title": "Region id",
+                    "description": "region id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_name": {
+                    "title": "Region name",
+                    "description": "数据中心名称",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "region_alias": {
+                    "title": "Region alias",
+                    "description": "数据中心别名",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "tenant_name": {
+                    "title": "Tenant name",
+                    "description": "租户名称",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "url": {
+                    "title": "Url",
+                    "description": "数据中心API url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "wsurl": {
+                    "title": "Wsurl",
+                    "description": "数据中心Websocket url",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "httpdomain": {
+                    "title": "Httpdomain",
+                    "description": "数据中心http应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "tcpdomain": {
+                    "title": "Tcpdomain",
+                    "description": "数据中心tcp应用访问根域名",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "数据中心token",
+                    "type": "string",
+                    "default": "",
+                    "maxLength": 127,
+                    "x-nullable": true
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "数据中心状态 0：编辑中 1:启用 2：停用 3:维护中",
+                    "type": "string",
+                    "maxLength": 2,
+                    "minLength": 1
+                },
+                "desc": {
+                    "title": "Desc",
+                    "description": "数据中心描述",
+                    "type": "string",
+                    "maxLength": 128
+                },
+                "scope": {
+                    "title": "Scope",
+                    "description": "数据中心范围 private|public",
+                    "type": "string",
+                    "default": "private",
+                    "maxLength": 10,
+                    "minLength": 1
+                },
+                "ssl_ca_cert": {
+                    "title": "Ssl ca cert",
+                    "description": "数据中心访问ca证书地址",
+                    "type": "string",
+                    "maxLength": 65535
+                },
+                "cert_file": {
+                    "title": "Cert file",
+                    "description": "验证文件",
+                    "type": "string",
+                    "maxLength": 65535
+                },
+                "key_file": {
+                    "title": "Key file",
+                    "description": "验证的key",
+                    "type": "string",
+                    "maxLength": 65535
+                }
+            }
+        },
+        "ListTeamRegionsResp": {
+            "required": [
+                "total",
+                "regions"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TeamRegionsResp"
+                    }
+                }
+            }
+        },
+        "TeamRegionReq": {
+            "type": "object",
+            "properties": {
+                "region": {
+                    "title": "Region",
+                    "description": "数据中心名称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                }
+            }
+        },
+        "TeamServicesResp": {
+            "required": [
+                "update_time",
+                "deploy_version",
+                "service_alias",
+                "service_cname",
+                "group_name",
+                "service_type",
+                "service_id",
+                "group_id",
+                "tenant_name",
+                "region_id"
+            ],
+            "type": "object",
+            "properties": {
+                "update_time": {
+                    "title": "Update time",
+                    "description": "更新日期",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "deploy_version": {
+                    "title": "Deploy version",
+                    "description": "组件版本",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "service_alias": {
+                    "title": "Service alias",
+                    "description": "组件昵称",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "service_cname": {
+                    "title": "Service cname",
+                    "description": "组件名称",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "group_name": {
+                    "title": "Group name",
+                    "description": "应用名称",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "service_type": {
+                    "title": "Service type",
+                    "description": "组件类型",
+                    "type": "string",
+                    "maxLength": 255
+                },
+                "service_id": {
+                    "title": "Service id",
+                    "description": "组件id",
+                    "type": "string",
+                    "maxLength": 64
+                },
+                "group_id": {
+                    "title": "Group id",
+                    "description": "组id",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "tenant_name": {
+                    "title": "Tenant name",
+                    "description": "租户名称",
+                    "type": "string",
+                    "maxLength": 32
+                },
+                "region_id": {
+                    "title": "Region id",
+                    "description": "数据中心id",
+                    "type": "string",
+                    "maxLength": 32
+                }
+            }
+        },
+        "ListRegionTeamServices": {
+            "required": [
+                "total",
+                "services"
+            ],
+            "type": "object",
+            "properties": {
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TeamServicesResp"
+                    }
+                }
+            }
+        },
+        "RoleInfoResp": {
+            "required": [
+                "role_id",
+                "role_name"
+            ],
+            "type": "object",
+            "properties": {
+                "role_id": {
+                    "title": "Role id",
+                    "description": "角色ID",
+                    "type": "integer"
+                },
+                "role_name": {
+                    "title": "Role name",
+                    "description": "角色名称",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                }
+            }
+        },
+        "TeamUser": {
+            "required": [
+                "user_id",
+                "role_infos"
+            ],
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "title": "User id",
+                    "type": "integer"
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "邮件地址",
+                    "type": "string",
+                    "maxLength": 35,
+                    "x-nullable": true
+                },
+                "nick_name": {
+                    "title": "Nick name",
+                    "description": "用户昵称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "description": "手机号码",
+                    "type": "string",
+                    "maxLength": 11,
+                    "x-nullable": true
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "激活状态",
+                    "type": "boolean"
+                },
+                "origion": {
+                    "title": "Origion",
+                    "description": "用户来源",
+                    "type": "string",
+                    "maxLength": 12,
+                    "x-nullable": true
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "enterprise_id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "role_infos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RoleInfo"
+                    }
+                }
+            }
+        },
+        "ListTeamUsersResp": {
+            "required": [
+                "users",
+                "total"
+            ],
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TeamUser"
+                    }
+                },
+                "total": {
+                    "title": "Total",
+                    "type": "integer"
+                }
+            }
+        },
+        "CreateTeamUserReq": {
+            "required": [
+                "role_ids"
+            ],
+            "type": "object",
+            "properties": {
+                "role_ids": {
+                    "title": "Role ids",
+                    "description": "角色ID列表",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "UploadFileResp": {
+            "required": [
+                "file_url"
+            ],
+            "type": "object",
+            "properties": {
+                "file_url": {
+                    "title": "File url",
+                    "description": "访问文件的URL",
+                    "type": "string",
+                    "maxLength": 1024,
+                    "minLength": 1
+                }
+            }
+        },
+        "ChangePassWdUser": {
+            "required": [
+                "user_id",
+                "password",
+                "password1"
+            ],
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "title": "User id",
+                    "description": "user_id",
+                    "type": "integer"
+                },
+                "password": {
+                    "title": "Password",
+                    "description": "新密码",
+                    "type": "string",
+                    "maxLength": 16,
+                    "minLength": 8
+                },
+                "password1": {
+                    "title": "Password1",
+                    "description": "再次确认新密码",
+                    "type": "string",
+                    "maxLength": 16,
+                    "minLength": 8
+                }
+            }
+        },
+        "CreateUser": {
+            "required": [
+                "nick_name",
+                "password",
+                "enterprise_id"
+            ],
+            "type": "object",
+            "properties": {
+                "nick_name": {
+                    "title": "Nick name",
+                    "description": "用户昵称",
+                    "type": "string",
+                    "maxLength": 24,
+                    "minLength": 1
+                },
+                "password": {
+                    "title": "Password",
+                    "description": "用户昵称",
+                    "type": "string",
+                    "maxLength": 16,
+                    "minLength": 8
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "enterprise_id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "邮件地址",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 35,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "description": "手机号码",
+                    "type": "string",
+                    "maxLength": 11,
+                    "minLength": 1
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "激活状态",
+                    "type": "boolean",
+                    "default": true
+                },
+                "origion": {
+                    "title": "Origion",
+                    "description": "用户来源",
+                    "type": "string",
+                    "maxLength": 12,
+                    "minLength": 1
+                }
+            }
+        },
+        "UpdateUser": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "title": "Password",
+                    "description": "用户昵称",
+                    "type": "string",
+                    "maxLength": 16,
+                    "minLength": 8
+                },
+                "enterprise_id": {
+                    "title": "Enterprise id",
+                    "description": "enterprise_id",
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "邮件地址",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 35,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "description": "手机号码",
+                    "type": "string",
+                    "maxLength": 11
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "description": "激活状态",
+                    "type": "boolean",
+                    "x-nullable": true
+                }
+            }
+        }
+    }
+}
