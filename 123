@@ -96,7 +96,13 @@
                     "openapi-user"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/announcements": {
             "get": {
@@ -152,7 +158,13 @@
                     "openapi-announcement"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/announcements/{aid}": {
             "put": {
@@ -195,6 +207,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/apps": {
@@ -267,7 +285,13 @@
                     "openapi-apps"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/apps/{app_id}": {
             "get": {
@@ -299,6 +323,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/apps/{app_id}/httprules": {
@@ -334,6 +364,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/appstores": {
@@ -378,7 +414,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/appstores/{eid}": {
             "put": {
@@ -425,6 +467,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/auth-token": {
@@ -486,7 +534,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/configs/base": {
             "get": {
@@ -529,7 +583,13 @@
                     "openapi-config"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/configs/feature": {
             "get": {
@@ -572,7 +632,13 @@
                     "openapi-config"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/configs/feature/{key}": {
             "get": {
@@ -613,6 +679,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/enterprises": {
@@ -657,7 +729,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/enterprises/{eid}": {
             "get": {
@@ -723,6 +801,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/market-install": {
@@ -757,7 +841,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/regions": {
             "get": {
@@ -882,7 +972,13 @@
                     "openapi-region"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/regions/{region_id}": {
             "get": {
@@ -979,6 +1075,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/regions/{region_id}/status": {
@@ -1032,6 +1134,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams": {
@@ -1113,7 +1221,13 @@
                     "openapi-team"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/teams/{team_id}": {
             "get": {
@@ -1172,6 +1286,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/regions": {
@@ -1248,6 +1368,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/regions/{region_name}": {
@@ -1279,6 +1405,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/regions/{region_name}/services": {
@@ -1343,6 +1475,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/user-roles": {
@@ -1391,6 +1529,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/users": {
@@ -1442,6 +1586,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/teams/{team_id}/users/{user_id}": {
@@ -1523,6 +1673,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/upload-file": {
@@ -1555,7 +1711,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/user/changepwd": {
             "put": {
@@ -1582,7 +1744,13 @@
                     "applications/json"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/users": {
             "get": {
@@ -1644,7 +1812,13 @@
                     "openapi-user"
                 ]
             },
-            "parameters": []
+            "parameters": [],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
+            ]
         },
         "/users/{user_id}": {
             "get": {
@@ -1703,6 +1877,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/users/{user_id}/administrator": {
@@ -1741,6 +1921,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         },
         "/users/{user_id}/teams": {
@@ -1798,6 +1984,12 @@
                     "required": true,
                     "type": "string"
                 }
+            ],
+            "consumes": [
+                "applications/json"
+            ],
+            "produces": [
+                "applications/json"
             ]
         }
     },
