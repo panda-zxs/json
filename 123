@@ -94,15 +94,15 @@
                 "responses": {},
                 "tags": [
                     "openapi-user"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/announcements": {
             "get": {
@@ -156,15 +156,15 @@
                 "responses": {},
                 "tags": [
                     "openapi-announcement"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/announcements/{aid}": {
             "put": {
@@ -198,6 +198,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-announcement"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -207,12 +213,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/apps": {
@@ -283,15 +283,15 @@
                 },
                 "tags": [
                     "openapi-apps"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/apps/{app_id}": {
             "get": {
@@ -323,12 +323,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/apps/{app_id}/httprules": {
@@ -364,12 +358,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/appstores": {
@@ -414,13 +402,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/appstores/{eid}": {
             "put": {
@@ -467,12 +449,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/auth-token": {
@@ -534,13 +510,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/configs/base": {
             "get": {
@@ -581,15 +551,15 @@
                 "responses": {},
                 "tags": [
                     "openapi-config"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/configs/feature": {
             "get": {
@@ -630,15 +600,15 @@
                 "responses": {},
                 "tags": [
                     "openapi-config"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/configs/feature/{key}": {
             "get": {
@@ -670,6 +640,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-config"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -679,12 +655,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/enterprises": {
@@ -729,13 +699,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/enterprises/{eid}": {
             "get": {
@@ -792,6 +756,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-entreprise"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -801,12 +771,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/market-install": {
@@ -841,13 +805,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/regions": {
             "get": {
@@ -970,15 +928,15 @@
                 },
                 "tags": [
                     "openapi-region"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/regions/{region_id}": {
             "get": {
@@ -1044,6 +1002,12 @@
                 },
                 "tags": [
                     "openapi-region"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "delete": {
@@ -1066,6 +1030,12 @@
                 },
                 "tags": [
                     "openapi-region"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1075,12 +1045,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/regions/{region_id}/status": {
@@ -1134,12 +1098,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams": {
@@ -1219,15 +1177,15 @@
                 },
                 "tags": [
                     "openapi-team"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/teams/{team_id}": {
             "get": {
@@ -1268,6 +1226,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-team"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "delete": {
@@ -1277,6 +1241,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-team"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1286,12 +1256,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/regions": {
@@ -1359,6 +1323,12 @@
                 },
                 "tags": [
                     "openapi-team-region"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1368,12 +1338,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/regions/{region_name}": {
@@ -1405,12 +1369,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/regions/{region_name}/services": {
@@ -1460,6 +1418,12 @@
                 },
                 "tags": [
                     "teams"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1475,12 +1439,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/user-roles": {
@@ -1529,12 +1487,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/users": {
@@ -1586,12 +1538,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/teams/{team_id}/users/{user_id}": {
@@ -1642,6 +1588,12 @@
                 },
                 "tags": [
                     "openapi-team"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "delete": {
@@ -1658,6 +1610,12 @@
                 },
                 "tags": [
                     "openapi-team"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1673,12 +1631,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/upload-file": {
@@ -1711,13 +1663,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/user/changepwd": {
             "put": {
@@ -1744,13 +1690,7 @@
                     "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/users": {
             "get": {
@@ -1810,15 +1750,15 @@
                 "responses": {},
                 "tags": [
                     "openapi-user"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
-            "parameters": [],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
-            ]
+            "parameters": []
         },
         "/users/{user_id}": {
             "get": {
@@ -1859,6 +1799,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-user"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "delete": {
@@ -1868,6 +1814,12 @@
                 "responses": {},
                 "tags": [
                     "openapi-user"
+                ],
+                "consumes": [
+                    "applications/json"
+                ],
+                "produces": [
+                    "applications/json"
                 ]
             },
             "parameters": [
@@ -1877,12 +1829,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/users/{user_id}/administrator": {
@@ -1921,12 +1867,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         },
         "/users/{user_id}/teams": {
@@ -1984,12 +1924,6 @@
                     "required": true,
                     "type": "string"
                 }
-            ],
-            "consumes": [
-                "applications/json"
-            ],
-            "produces": [
-                "applications/json"
             ]
         }
     },
