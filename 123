@@ -40,7 +40,6 @@
             "get": {
                 "operationId": "administrators_list",
                 "description": "获取企业管理员列表",
-                "requestType": "applications/json"
                 "parameters": [
                     {
                         "name": "eid",
